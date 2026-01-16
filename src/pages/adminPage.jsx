@@ -5,6 +5,7 @@ import { LuClipboardList } from "react-icons/lu";
 import { LuBoxes } from "react-icons/lu";
 import { LuUsers } from "react-icons/lu";
 import { MdOutlineRateReview } from "react-icons/md";
+import AdminProductPage from "./admin/adminProductPage";
 export default function AdminPage() {
 
     return(
@@ -32,7 +33,7 @@ export default function AdminPage() {
             {/* <div className="w-full h-full max-h-full overflow-y-scroll"></div> */}
             <Routes path="/admin/*">
                 <Route path="/orders" element={<h1>Orders Page</h1>}></Route>
-                <Route path="/products" element={<h1>Products Page</h1>}></Route>
+                <Route path="/products" element={<AdminProductPage />}></Route>
                 <Route path="/users" element={<h1>Users Page</h1>}></Route>
                 <Route path="/reviews" element={<h1>Reviews Page</h1>}></Route>
             </Routes>

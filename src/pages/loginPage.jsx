@@ -10,13 +10,16 @@ export default function LoginPage() {
     const[password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    async function Login(){
+async function Login(){
     try {
         const res = await axios.post( import.meta.env.VITE_BACKEND_URL+"/users/login/", 
             { email : email,
             password : password });
 
             console.log("Login Success",res);
+
+             localStorage.setItem("token", res.data.token);
+             const token = res.data.token;
 
             if(res.data.role == "admin"){
                 navigate("/admin");
