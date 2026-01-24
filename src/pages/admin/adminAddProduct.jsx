@@ -38,7 +38,7 @@ async function addProduct() {
         const altNamesArray = altNames.split(",");
         const imagesArray = images.split(",");
         await axios.post( import.meta.env.VITE_BACKEND_URL+ "/products",{
-            productId : productId,
+            productId : productId.trim(),
             name : name,
             altNames : altNamesArray,    
             description : description,
@@ -161,6 +161,7 @@ async function addProduct() {
 					<div className="my-[10px] flex flex-col w-[30%]">
 						<label>Category</label>
 						<select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full h-[40px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent border border-accent shadow-2xl px-[20px]">
+                            <option value="">Select Category</option>
 							<option value="CPU">CPU</option>
 							<option value="Graphic Cards">Graphic Cards</option>
                             <option value="Motherboards">Motherboards</option>
