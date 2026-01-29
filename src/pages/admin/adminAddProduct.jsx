@@ -1,87 +1,101 @@
 import axios from "axios";
-import React from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { AiOutlineProduct } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
+import uploadFile from "../../utils/mediaUpload";
 
 export default function AdminAddProductPage() {
+	const [productID, setProductID] = useState("");
+	const [name, setName] = useState("");
+	const [altNames, setAltNames] = useState("");
+	const [description, setDescription] = useState("");
+	const [price, setPrice] = useState(0);
+	const [labelledPrice, setLabelledPrice] = useState(0);
+	const [files, setFiles] = useState([]);
+	const [category, setCategory] = useState("");
+	const [brand, setBrand] = useState("");
+	const [model, setModel] = useState("");
+	const [stock, setStock] = useState(0);
+	const [isAvailable, setIsAvailable] = useState(false);
+    const navigate = useNavigate()
 
-const[productId, setProductId] = useState("");
-const[name, setName] = useState("");
-const[altNames, setAltNames] = useState("");
-const[description, setDescription] = useState("");
-const[price, setPrice] = useState(0);
-const[labelPrice, setLabelPrice] =  useState(0);
-const[images, setImages] = useState("");
-const[category, setCategory] = useState("");
-const[brand, setBrand] = useState("");
-const[model, setModel] = useState("");
-const[stock, setStock] = useState(0);
-const[isAvailable, setIsAvailable] = useState(false);
-const navigate = useNavigate();
+    async function addProduct(){
 
-async function addProduct() {
-    const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
+        if(token == null){
+            toast.error("You must be logged in as admin to add products.");
+            navigate("/login");
+            return;
+        }
+		console.log(files);
 
-    if(token == null){
-        toast.error("You must be logged in to add a product.");
-        navigate("/login");
-        return;
+		const imagePromises = []
+
+	
+		//10
+		for(let i=0; i<files.length; i++){
+
+			const promise = uploadFile(files[i])
+			imagePromises.push(promise);
+
+		}
+
+		const images = await Promise.all(imagePromises).catch((err)=>{
+			toast.error("Error uploading images. Please try again.");
+			console.log("Error uploading images:");
+			console.log(err);
+			return;
+		});
+
+        if(productID=="" ||name=="" || description=="" || category=="" || brand=="" || model==""){
+            toast.error("Please fill in all required fields.");
+            return;
+        }
+
+        try{
+            const altNamesInArray = altNames.split(",")
+            await axios.post(import.meta.env.VITE_BACKEND_URL + "/products/", {
+                productID : productID,
+                name : name,
+                altNames : altNamesInArray,
+                description : description,
+                price : price,
+                labelledPrice : labelledPrice,
+                images : images,
+                category : category,
+                brand : brand,
+                model : model,
+                stock : stock,
+                isAvailable : isAvailable,
+            }, {
+                headers :{
+                    Authorization : "Bearer "+token
+                }
+            })
+            toast.success("Product added successfully!");
+            navigate("/admin/products");
+
+        }catch(err){
+            toast.error("Error adding product. Please try again.");
+            console.log("Error adding product:");
+            console.log(err);
+        }
     }
 
-    if(productId == "" || name == "" || description == "" || price == 0 || category == "" || brand == "" || model == "" || stock == 0){
-        toast.error("Please fill in all required fields.");
-        return;
-    }
-
-    try {
-        const altNamesArray = altNames.split(",");
-        const imagesArray = images.split(",");
-        await axios.post( import.meta.env.VITE_BACKEND_URL+ "/products",{
-            productId : productId.trim(),
-            name : name,
-            altNames : altNamesArray,    
-            description : description,
-            price : price,
-            labelPrice : labelPrice,
-            images : imagesArray,    
-            category : category,
-            brand : brand,
-            model : model,  
-            stock : stock,
-            isAvailable : isAvailable
-        },{
-            headers : {
-                Authorization : "Bearer "+token
-            }
-        });
-        toast.success("Product added successfully!");
-        navigate("/admin/products");
-        
-    } catch (error) {
-        // console.error("Failed to add product:", error);
-        // toast.error("Failed to add product. Please try again.");
-        console.error("Backend error:", error.response?.data);
-        toast.error(error.response?.data?.message || "Failed to add product");
-        
-    }
-}
-
-
-    return (
-       		<div className="w-full flex justify-center p-[50px]">
+	return (
+		<div className="w-full flex justify-center p-[50px]">
 			<div className=" bg-accent/80 rounded-2xl p-[40px] w-[800px] shadow-2xl overflow-y-visible">
-            <h1 className="w-full text-xl text-primary mb-[20px] flex items-center gap-[5px]">Add New Product</h1>
-
+                <h1 className="w-full text-xl text-primary mb-[20px] flex items-center gap-[5px]"><AiOutlineProduct /> Add New Product</h1>
 				<div className="w-full bg-white p-[20px] flex flex-row flex-wrap justify-between rounded-xl shadow-2xl">
                     
 					<div className="my-[10px] w-[40%]">
 						<label>Product ID</label>
 						<input
 							type="text"
-							value={productId}
+							value={productID}
 							onChange={(e) => {
-								setProductId(e.target.value);
+								setProductID(e.target.value);
 							}}
 							className="w-full h-[40px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent border border-accent shadow-2xl px-[20px]"
 						/>
@@ -139,21 +153,21 @@ async function addProduct() {
 						<label>Labelled Price</label>
 						<input
 							type="number"
-							value={labelPrice}
+							value={labelledPrice}
 							onChange={(e) => {
-								setLabelPrice(e.target.value);
+								setLabelledPrice(e.target.value);
 							}}
 							className="w-full h-[40px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent border border-accent shadow-2xl px-[20px]"
 						/>
 					</div>
 
-                    <div className="my-[10px] w-[80%]">
+					<div className="my-[10px] w-full">
 						<label>Images</label>
 						<input
-							type="text"
-							value={images}
+							type="file"
+							multiple={true}
 							onChange={(e) => {
-								setImages(e.target.value);
+								setFiles(e.target.files);
 							}}
 							className="w-full h-[40px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent border border-accent shadow-2xl px-[20px]"
 						/>
@@ -161,7 +175,6 @@ async function addProduct() {
 					<div className="my-[10px] flex flex-col w-[30%]">
 						<label>Category</label>
 						<select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full h-[40px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent border border-accent shadow-2xl px-[20px]">
-                            <option value="">Select Category</option>
 							<option value="CPU">CPU</option>
 							<option value="Graphic Cards">Graphic Cards</option>
                             <option value="Motherboards">Motherboards</option>
@@ -230,5 +243,5 @@ async function addProduct() {
 				</div>
 			</div>
 		</div>
-    );
+	);
 }
