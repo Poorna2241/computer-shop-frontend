@@ -7,6 +7,7 @@ import { LuUsers } from "react-icons/lu";
 import { MdOutlineRateReview } from "react-icons/md";
 import AdminProductsPage from "./admin/adminProductsPage.jsx";
 import AdminAddProductPage from "./admin/adminAddProduct.jsx";
+import AdminUpdateProductPage from "./admin/adminUpdateProduct.jsx";
 
 
 export default function AdminPage() {
@@ -38,6 +39,7 @@ export default function AdminPage() {
                 <Route path="/orders" element={<h1>Orders Page</h1>}></Route>
                 <Route path="/products" element={<AdminProductsPage />}></Route>
                 <Route path="/add-product" element={<AdminAddProductPage />}></Route>
+                <Route path="/update-product/:id" element={<AdminUpdateProductPage />}></Route>
                 <Route path="/users" element={<h1>Users Page</h1>}></Route>
                 <Route path="/reviews" element={<h1>Reviews Page</h1>}></Route>
             </Routes>

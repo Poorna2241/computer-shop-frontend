@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "../components/header.jsx";
+import ProductPage from "./productPage.jsx";
 
 export default function HomePage(){
     return(
@@ -9,7 +10,7 @@ export default function HomePage(){
     <div className="w-full h-[calc(100%-100px)] bg-amber-600 ">
         <Routes path="/*">
             <Route path="/" element={<h1>Home Page</h1>}></Route>
-            <Route path="/products" element={<h1>Products Page</h1>}></Route>
+            <Route path="/products" element={<ProductPage />}></Route>
             <Route path="/about" element={<h1>About Page</h1>}></Route>
             <Route path="/contact" element={<h1>Contact Page</h1>}></Route>
             <Route path="/*" element={<h1>404 Not Found</h1>}></Route>
