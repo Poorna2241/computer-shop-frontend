@@ -38,7 +38,7 @@ export default function AdminUpdateProductPage() {
 		const imagePromises = []
 
 	
-		//10
+		
 		for(let i=0; i<files.length; i++){
 
 			const promise = uploadFile(files[i])
