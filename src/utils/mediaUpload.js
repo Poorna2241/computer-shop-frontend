@@ -3,11 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 const url = import.meta.env.VITE_SUPABASE_URL;
 const key = import.meta.env.VITE_SUPABASE_KEY;
 	
-console.log("URL:", import.meta.env.VITE_SUPABASE_URL);
-console.log("KEY:", import.meta.env.VITE_SUPABASE_KEY);
-
-console.log(import.meta.env.VITE_SUPABASE_URL);
-
+const supabase = createClient(url, key);
 
 export default function uploadFile(file) {
 	return new Promise((resolve, reject) => {
