@@ -78,14 +78,14 @@ export function getCart(){
 //     localStorage.setItem("cart", "[]");
 // }
 
-// export function getCartTotal(){
-//     let total = 0;
-//     const cart = getCart();
+export function getCartTotal(){
+    let total = 0;
+    const cart = getCart();
 
-//     cart.forEach(
-//         (item)=>{
-//             total += item.price * item.quantity;
-//         }
-//     )
-//     return total;
-// }
+    cart.forEach(
+        (item)=>{
+            total += item.price * item.quantity;
+        }
+    )
+    return total;
+}
