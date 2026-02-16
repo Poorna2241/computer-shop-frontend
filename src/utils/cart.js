@@ -35,44 +35,44 @@ export function getCart(){
 
 
 
-// export function addToCart(product, quantity){
+export function addToCart(product, quantity){
 
-//     const cart = getCart();
+    const cart = getCart();
 
-//     //check if product is already in cart
+    //check if product is already in cart
 
-//     const index = cart.findIndex(
-//         (item)=>{
-//             return item.productID == product.productID
-//         }
-//     )
-//     if(index == -1){
-//         cart.push(
-//             {
-//                 productID: product.productID,
-//                 name: product.name,
-//                 price: product.price,
-//                 labelledPrice: product.labelledPrice,
-//                 quantity: quantity,
-//                 image: product.images[0]
-//             }
-//         )
-//         toast.success(`${product.name} added to cart`);
-//     }else{
-//         const newQty = cart[index].quantity + quantity
+    const index = cart.findIndex(
+        (item)=>{
+            return item.productID == product.productID
+        }
+    )
+    if(index == -1){
+        cart.push(
+            {
+                productID: product.productID,
+                name: product.name,
+                price: product.price,
+                labelledPrice: product.labelledPrice,
+                quantity: quantity,
+                image: product.images[0]
+            }
+        )
+        toast.success(`${product.name} added to cart`);
+    }else{
+        const newQty = cart[index].quantity + quantity
 
-//         if(newQty <= 0 ){
-//             cart.splice(index, 1);
-//             toast.success(`${product.name} removed from cart`);
-//         }else{
-//             cart[index].quantity = newQty;
-//             toast.success(`Updated ${product.name} quantity to ${newQty}`);
-//         }
-//     }
+        if(newQty <= 0 ){
+            cart.splice(index, 1);
+            toast.success(`${product.name} removed from cart`);
+        }else{
+            cart[index].quantity = newQty;
+            toast.success(`Updated ${product.name} quantity to ${newQty}`);
+        }
+    }
 
-//     const cartString = JSON.stringify(cart);
-//     localStorage.setItem("cart", cartString);
-// }
+    const cartString = JSON.stringify(cart);
+    localStorage.setItem("cart", cartString);
+}
 
 // export function emptyCart(){
 //     localStorage.setItem("cart", "[]");
