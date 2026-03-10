@@ -42,7 +42,7 @@ export function addToCart(product, quantity){
     //check if product is already in cart
 
     const index = cart.findIndex(
-        (item)=>{
+        (item)=>{ 
             return item.productID == product.productID
         }
     )
