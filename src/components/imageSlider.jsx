@@ -23,4 +23,4 @@ export default function ImageSlider(props) {
             </div>
         </div>
     );
-}
+}  

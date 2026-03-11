@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import UserData from "./userData";
 
+
 export default function Header() {
     return (
         <header className="w-full h-[100px] bg-accent flex">
@@ -11,6 +12,10 @@ export default function Header() {
                 <Link to="/about">About</Link>
                 <Link to="/contact">Contact</Link>
             </div>
+            <Link to="/cart" className="absolute right-[20px] top-[20px] text-2xl text-primary">
+                <i className="fa-solid fa-cart-shopping">cart</i>
+            </Link>
+        
            
         </header>
     )
