@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineProduct } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import uploadFile from "../../utils/mediaUpload";
+import uploadFile from "../../utils/mediaUpload.js";
 
 export default function AdminUpdateProductPage() {
     const location = useLocation();
