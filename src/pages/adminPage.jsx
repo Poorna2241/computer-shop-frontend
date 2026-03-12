@@ -7,7 +7,8 @@ import { LuUsers } from "react-icons/lu";
 import { MdOutlineRateReview } from "react-icons/md";
 import AdminProductsPage from "./admin/adminProductsPage.jsx";
 import AdminAddProductPage from "./admin/adminAddProduct.jsx";
-import AdminUpdateProductPage from "./admin/adminUpdateProduct.jsx";
+import AdminUpdateProductPage from "./admin/adminUpdateProductPage.jsx";
+import AdminOrdersPage from "./admin/adminOrdersPage.jsx";
 
 
 export default function AdminPage() {
@@ -36,10 +37,10 @@ export default function AdminPage() {
         <div className=" w-[calc(100%-300px)] h-full max-h-full bg-primary overflow-y-scroll border-4 rounded-3xl border-accent"> 
             {/* <div className="w-full h-full max-h-full overflow-y-scroll"></div> */}
             <Routes path="/admin/*">
-                <Route path="/orders" element={<h1>Orders Page</h1>}></Route>
+                <Route path="/orders" element={<AdminOrdersPage />}></Route>
                 <Route path="/products" element={<AdminProductsPage />}></Route>
                 <Route path="/add-product" element={<AdminAddProductPage />}></Route>
-                <Route path="/update-product/:id" element={<AdminUpdateProductPage />}></Route>
+                <Route path="/update-product/" element={<AdminUpdateProductPage />}></Route>
                 <Route path="/users" element={<h1>Users Page</h1>}></Route>
                 <Route path="/reviews" element={<h1>Reviews Page</h1>}></Route>
             </Routes>
