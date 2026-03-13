@@ -37,7 +37,7 @@ export default function CheckoutPage() {
 
 		cart.forEach((item) => {
 			orderItems.push({
-				productID: item.productID,
+				productId: item.productID,
 				quantity: item.quantity,
 			});
 		});
