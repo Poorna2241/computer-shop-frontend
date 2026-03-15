@@ -3,13 +3,14 @@ import Header from "../components/header.jsx";
 import ProductPage from "./productPage.jsx";
 import ProductOverview from "./productOverview.jsx";
 import Cart from "./cart.jsx";
+import CheckoutPage from "./checkOut.jsx";
 
 export default function HomePage(){
     return(
     <div className="w-full h-full">
         <Header/>
 
-    <div className="w-full h-[calc(100%-100px)] bg-amber-600 ">
+    <div className="w-full h-[calc(100%-100px)] bg-primary">
         <Routes path="/*">
             <Route path="/" element={<h1>Home Page</h1>}></Route>
             <Route path="/products" element={<ProductPage />}></Route>
