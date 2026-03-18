@@ -8,7 +8,7 @@ import AdminOrdersPage from "./admin/adminOrdersPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/loader";
-import AdminUsersPage from "./admin/adminUsersPage";
+import AdminUsersPage from "./admin/adminUserspage";
 export default function AdminPage() {
     const [user, setUser] = useState(null);
 

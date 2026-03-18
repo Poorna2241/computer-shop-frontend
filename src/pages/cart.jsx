@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addToCart, getCart, getCartTotal } from "../utils/cart";
+import { addToCart, getCart, getCartTotal,emptyCart } from "../utils/cart";
 import { BsChevronUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -85,6 +85,7 @@ export default function CartPage() {
 				>
 					Checkout
 				</Link>
+				
 				<span className="pr-4 text-xl font-bold w-[150px] text-right">
 					LKR. {getCartTotal().toFixed(2)}
 				</span>

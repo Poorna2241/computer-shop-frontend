@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import Header from "../components/header.jsx";
 import ProductPage from "./productPage.jsx";
 import ProductOverview from "./productOverview.jsx";
 import Cart from "./cart.jsx";
 import CheckoutPage from "./checkOut.jsx";
+import OrdersPage from "./ordersPage.jsx";
 
 export default function HomePage(){
     return(
@@ -20,6 +21,8 @@ export default function HomePage(){
             <Route path="/overview/:productID" element={<ProductOverview />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/checkout" element={<CheckoutPage />}></Route>
+            <Route path="/orders" element={<OrdersPage />}></Route>
+            
         </Routes>
 
        
