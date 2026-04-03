@@ -7,20 +7,20 @@ import CheckoutPage from "./checkOut.jsx";
 import OrdersPage from "./ordersPage.jsx";
 
 function HomeLanding() {
-    // const featureItems = [
-    //     {
-    //         title: "Certified Components",
-    //         description: "Every GPU, SSD, and motherboard is tested and sourced from trusted brands."
-    //     },
-    //     {
-    //         title: "Build Assistance",
-    //         description: "Need help choosing parts? Get compatibility guidance before you order."
-    //     },
-    //     {
-    //         title: "Secure Checkout",
-    //         description: "Quick and protected payments with instant order confirmation."
-    //     }
-    // ];
+    const featureItems = [
+        {
+            title: "Certified Components",
+            description: "Every GPU, SSD, and motherboard is tested and sourced from trusted brands."
+        },
+        {
+            title: "Build Assistance",
+            description: "Need help choosing parts? Get compatibility guidance before you order."
+        },
+        {
+            title: "Secure Checkout",
+            description: "Quick and protected payments with instant order confirmation."
+        }
+    ];
 
     const categoryItems = [
         { name: "Gaming Laptops", tag: "High FPS" },
