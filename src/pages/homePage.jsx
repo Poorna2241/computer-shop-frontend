@@ -5,6 +5,7 @@ import ProductOverview from "./productOverview.jsx";
 import Cart from "./cart.jsx";
 import CheckoutPage from "./checkOut.jsx";
 import OrdersPage from "./ordersPage.jsx";
+import AboutPage from "./aboutpage.jsx";
 
 function HomeLanding() {
     const featureItems = [
@@ -131,7 +132,7 @@ export default function HomePage(){
         <Routes path="/*">
             <Route path="/" element={<HomeLanding />}></Route>
             <Route path="/products" element={<ProductPage />}></Route>
-            <Route path="/about" element={<h1>About Page</h1>}></Route>
+            <Route path="/about" element={<AboutPage />}></Route>
             <Route path="/contact" element={<h1>Contact Page</h1>}></Route>
             <Route path="/*" element={<h1>404 Not Found</h1>}></Route>
             <Route path="/overview/:productID" element={<ProductOverview />}></Route>
