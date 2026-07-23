@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            Quick Contact Info Cards
+            {/* Quick Contact Info Cards */}
             <section className="px-6 pb-12 md:px-12 lg:px-20">
                 <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="rounded-3xl border border-secondary/10 bg-white/70 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
@@ -182,7 +182,7 @@ export default function ContactPage() {
                         </form>
                     </div>
 
-                    {/* Store Info & Operating Hours
+                    Store Info & Operating Hours
                     <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
                         <div className="rounded-[2rem] bg-secondary p-7 text-primary md:p-8">
                             <h3 className="text-xl font-black md:text-2xl">Operating Hours</h3>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                                     <span className="text-gold font-bold">Closed</span>
                                 </div>
                             </div>
-                        </div> */}
+                        </div>
 
                         <div className="rounded-[2rem] border border-secondary/10 bg-white/70 p-7 shadow-sm md:p-8">
                             <h3 className="text-lg font-bold">Need Immediate Help?</h3>
